@@ -17,14 +17,14 @@ Installation
 
 Contributions
 
-- Les contributions à cette application sont les bienvenues ! Si vous souhaitez améliorer ou ajouter des fonctionnalités, veuillez suivre les étapes suivantes :
-
-1- Fork ce dépôt de code source.
+Les contributions à cette application sont les bienvenues ! Si vous souhaitez améliorer ou ajouter des fonctionnalités, veuillez suivre les étapes suivantes :
+ 
+1 - Fork ce dépôt de code source.
 2 - Créez une branche pour vos modifications : git checkout -b feature/nouvelle_fonctionnalite.
 3 - Effectuez les modifications souhaitées et committez-les : git commit -m 'Ajouter une nouvelle fonctionnalité'.
 4 - Poussez les modifications vers votre fork : git push origin feature/nouvelle_fonctionnalite.
 5 - Ouvrez une Pull Request pour que vos modifications soient examinées.
 
-Auteurs
+Auteurs:
 
 Douz Othman
