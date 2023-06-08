@@ -4,38 +4,43 @@ if (!isset($_SESSION['username'])) {
     header('Location: login.php');
     exit();
 }
-
-// Vérification de l'ID du personnage dans l'URL
-if (!isset($_GET['id']) || empty($_GET['id'])) {
-    header('Location: index.php');
-    exit();
-}
-
-// Connexion à la base de données
-$conn = new PDO('mysql:host=localhost;dbname=coursPHP', 'root', 'AZERTYUIOP');
-
-// Récupération du personnage
-$id = $_GET['id'];
-$query = $conn->prepare("SELECT * FROM personnages WHERE id = :id AND proprietaire = :username");
-$query->bindParam(':id', $id);
-$query->bindParam(':username', $_SESSION['username']);
-$query->execute();
-$character = $query->fetch(PDO::FETCH_ASSOC);
-
-// Vérification si le personnage existe et appartient à l'utilisateur
-if (!$character) {
-    header('Location: index.php');
-    exit();
-}
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Détail du personnage</title>
+    <title>Liste des personnages</title>
 </head>
 <body>
-    <h1>Détail du personnage</h1>
+    <h1>Liste des personnages</h1>
 
-    <h2><?php echo $character['nom']; ?></h2>
-    <p>Classe : <?php echo $character['
+    <?php
+    // Connexion à la base de données
+    $conn = new PDO('mysql:host=localhost;dbname=votre_base_de_donnees', 'nom_utilisateur', 'mot_de_passe');
+
+    // Récupération des personnages de l'utilisateur connecté
+    $username = $_SESSION['username'];
+    $query = $conn->prepare("SELECT * FROM personnages WHERE proprietaire = :username");
+    $query->bindParam(':username', $username);
+    $query->execute();
+    $characters = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    // Affichage des personnages
+    if (count($characters) > 0) {
+        echo '<ul>';
+        foreach ($characters as $character) {
+            echo '<li><a href="detail.php?id=' . $character['id'] . '">' . $character['nom'] . '</a></li>';
+        }
+        echo '</ul>';
+    } else {
+        echo 'Aucun personnage trouvé.';
+    }
+
+    // Fermeture de la connexion à la base de données
+    $conn = null;
+    ?>
+
+    <br>
+    <a href="logout.php">Déconnexion</a>
+</body>
+</html>

@@ -16,7 +16,7 @@ if (!isset($_SESSION['username'])) {
 
     <?php
     // Connexion à la base de données
-    $conn = new PDO('mysql:host=localhost;dbname=CoursPHP', 'root', 'AZERTYUIOP');
+    $conn = new PDO('mysql:host=localhost;dbname=', '', '');
 
     // Récupération des personnages de l'utilisateur connecté
     $username = $_SESSION['username'];
