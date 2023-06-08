@@ -12,7 +12,7 @@ if (!isset($_GET['id']) || empty($_GET['id'])) {
 }
 
 // Connexion à la base de données
-$conn = new PDO('mysql:host=localhost;dbname=votre_base_de_donnees', 'nom_utilisateur', 'mot_de_passe');
+$conn = new PDO('mysql:host=localhost;dbname=coursPHP', 'root', 'AZERTYUIOP');
 
 // Récupération du personnage
 $id = $_GET['id'];
